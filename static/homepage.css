@@ -1,0 +1,45 @@
+#thumbnail-container{
+    position: relative;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    border: none;
+    transition: transform 0.3s;
+}
+
+#thumbnail {
+    display: flex;
+    width: 400px;
+    height: 300;
+    justify-content: center;
+    border: none;
+    outline-style: transparent;
+    transition: width 0.3s, height 0.3s; /
+}
+
+#thumbnail:hover  {
+    width: 410px;
+
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: transform 0.2s;
+}
+
+.navbar-brand {
+   font-size: 200px;
+}
+
+#button-addon2 {
+    background-image: url("static/images/magnifying-glass-solid.svg")
+}
