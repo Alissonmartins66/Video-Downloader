@@ -1,3 +1,4 @@
+import requests
 from flask import Flask, request, send_file, render_template, jsonify
 import yt_dlp
 import os
@@ -27,6 +28,16 @@ def homepage():
     video_url = request.args.get('video_url')
     return render_template('homepage.html', video_url=video_url)
 
+def resolve_short_url(short_url):
+    try:
+        # Envia uma solicitação HEAD para o URL encurtado para seguir redirecionamentos
+        response = requests.head(short_url, allow_redirects=True)
+        full_url = response.url
+        return full_url
+    except Exception as e:
+        print(f"Erro ao resolver URL encurtado: {str(e)}")
+        return None
+
 @app.route('/download', methods=['POST'])
 def download():
     url = request.form.get('video_url')
@@ -34,6 +45,14 @@ def download():
 
     if not url:
         return 'O URL do vídeo não foi fornecido.', 400
+
+    # Verifica se o URL é um URL encurtado e tenta desencurtá-lo
+    if "youtu.be" in url:
+        full_url = resolve_short_url(url)
+        if full_url:
+            url = full_url
+        else:
+            return 'Erro ao resolver URL encurtado.', 400
 
     format_map = {
         'video': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
