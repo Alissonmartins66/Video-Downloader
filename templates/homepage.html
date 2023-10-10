@@ -5,36 +5,38 @@
     <title>My bootstrap</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
     <header>
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid d-flex justify-content-center">
-                <a class="navbar-brand" href="/">EzDownload</a>
-            </div>
-        </nav>
-    </header>
-    <div class="container mt-5">
-        <form method="POST" action="/download">
-            <div class="input-group mb-3">
-                <input type="text" name="video_url" id="video_url" class="form-control" placeholder="Insira o Link" aria-label="Text input with segmented dropdown button">
-                <button class="btn btn-success" type="button" id="button-addon2">
-                    <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
-                </button>
-            </div>
-            <div class="text-center" id="thumbnail-container">
-                <a href="" class="thumblink" title="videoLink" target="_blank">
-                    <img id="thumbnail" title="imageThumbnail" src="">
-                    <span class="play-btn" style="background-image: url('static/images/img_1.png')"></span>
-                </a>
-            </div>
-            <div class="text-center mt-3" id="buttons-container" style="display: none;">
-                <button type="submit" class="btn btn-success m-2" name="format" value="video">Baixar Vídeo (MP4)</button>
-                <button type="submit" class="btn btn-success m-2" name="format" value="audio">Baixar Áudio (MP3)</button>
-            </div>
-        </form>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">EzDownload</a>
+        </div>
+    </nav>
+</header>
+
+<div class="container mt-5">
+    <form method="POST" action="/download">
+        <div class="input-group mb-3">
+            <input type="text" name="video_url" id="video_url" class="form-control" placeholder="Insira o Link" aria-label="Text input with segmented dropdown button">
+            <button class="btn btn-success" type="button" id="button-addon2">
+                <i class="fa-solid fa-magnifying-glass text-white"></i>
+            </button>
+        </div>
+        <div class="text-center" id="thumbnail-container">
+            <a href="" class="thumblink" title="videoLink" target="_blank">
+                <img id="thumbnail" title="imageThumbnail" src="" class="img-fluid">
+                <span class="play-btn" style="background-image: url('static/images/img_1.png')"></span>
+            </a>
+        </div>
+        <div class="text-center mt-3" id="buttons-container" style="display: none;">
+            <button type="submit" class="btn btn-success m-2" name="format" value="video">Baixar Vídeo (MP4)</button>
+            <button type="submit" class="btn btn-success m-2" name="format" value="audio">Baixar Áudio (MP3)</button>
+        </div>
+    </form>
+</div>
 
 
     <script src="{{ url_for('static', filename='thumbnail.js') }}"></script>
