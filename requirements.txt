@@ -14,3 +14,4 @@ pycryptodomex==3.19.0
 websockets==11.0.3
 Werkzeug==2.2.3
 yt-dlp==2023.10.7
+requests~=2.31.0
