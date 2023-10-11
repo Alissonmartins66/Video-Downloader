@@ -55,8 +55,8 @@ def download():
             return 'Erro ao resolver URL encurtado.', 400
 
     format_map = {
-        'video': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
-        'audio': 'bestaudio/best',
+        'video': 'bestvideo[ext=mp4][vcodec^=avc1]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+        'audio': 'bestaudio[ext=m4a]/best'
     }
 
     if selected_format in format_map:
